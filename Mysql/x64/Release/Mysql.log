@@ -1,0 +1,6 @@
+﻿  Reading Qt configuration (D:/Qt/6.7.2/msvc2019_64/bin/qmake)
+  正在生成代码
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 18 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  Mysql.vcxproj -> D:\C++\Qt\ChartWidget\x64\Release\Mysql.dll

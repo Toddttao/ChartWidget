@@ -9,6 +9,12 @@
 
 
 
+#ifdef DATABASEMANAGER_EXPORTS
+#define DATABASEMANAGER_API __declspec(dllexport)
+#else
+#define DATABASEMANAGER_API __declspec(dllimport)
+#endif
+
 class mysql :
     public QObject
 {
@@ -21,7 +27,8 @@ private:
     //数据库对象指针
     QSqlDatabase* db;
 
-
+    //查询数据库对象指针
+    QSqlQuery* query;
 
 private:
     void initdatabase();
