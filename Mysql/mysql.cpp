@@ -1,6 +1,6 @@
 #include "mysql.h"
 
-mysql::mysql()
+mysql::mysql():db(new QSqlDatabase(QSqlDatabase::addDatabase("ODBC")))
 {
 	
 }
@@ -13,7 +13,7 @@ mysql::~mysql()
 void mysql:: initdatabase()
 {
 	//初始化db，并添加ODBC数据库驱动
-	db = new QSqlDatabase(QSqlDatabase::addDatabase("QODBC"));
+	//db = new QSqlDatabase(QSqlDatabase::addDatabase("QODBC"));
 
 	//设置ip
 	db->setHostName("localhost");
