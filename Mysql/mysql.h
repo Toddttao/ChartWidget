@@ -15,7 +15,7 @@
 #define DATABASEMANAGER_API __declspec(dllimport)
 #endif
 
-class mysql :
+class DATABASEMANAGER_API mysql :
     public QObject
 {
     Q_OBJECT

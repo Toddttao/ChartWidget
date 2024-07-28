@@ -3,6 +3,13 @@
 #include <QtWidgets/QDialog>
 #include "ui_login.h"
 #include <qmessagebox.h>
+#include "Mysql/mysql.h"
+
+#ifdef MYLIBRARY_EXPORTS
+#define MYLIBRARY_API __declspec(dllexport)
+#else
+#define MYLIBRARY_API __declspec(dllimport)
+#endif
 
 class login : public QDialog
 {
