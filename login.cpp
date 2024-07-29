@@ -15,7 +15,7 @@ login::login(QWidget *parent)
 login::~login()
 {}
 
-//µÇÂ¼
+//ç™»å½•
 void login::loginFunction()
 {
 	inUser = ui.username->text();
@@ -31,7 +31,7 @@ void login::loginFunction()
 	}
 }
 
-//×¢²á
+//æ³¨å†Œ
 void login::signFunction()
 {
 	

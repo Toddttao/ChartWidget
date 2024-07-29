@@ -23,8 +23,8 @@ public:
     ~login();
 
 private slots:
-    void loginFunction();//µÇÂ¼²Ûº¯Êý
-    void signFunction();//×¢²á²Ûº¯Êý
+    void loginFunction();//ç™»å½•æ§½å‡½æ•°
+    void signFunction();//æ³¨å†Œæ§½å‡½æ•°
 
 private:
     Ui::loginClass ui;

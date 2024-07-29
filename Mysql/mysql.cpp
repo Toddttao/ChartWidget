@@ -1,6 +1,6 @@
 #include "mysql.h"
 
-mysql::mysql():db(new QSqlDatabase(QSqlDatabase::addDatabase("ODBC")))
+mysql::mysql():db(new QSqlDatabase(QSqlDatabase::addDatabase("QODBC")))
 {
 	initdatabase();
 }
@@ -9,34 +9,34 @@ mysql::~mysql()
 	
 }
 
-//³õÊ¼»¯Êı¾İ¿â
+//åˆå§‹åŒ–æ•°æ®åº“
 void mysql:: initdatabase()
 {
-	//³õÊ¼»¯db£¬²¢Ìí¼ÓODBCÊı¾İ¿âÇı¶¯
+	//åˆå§‹åŒ–dbï¼Œå¹¶æ·»åŠ ODBCæ•°æ®åº“é©±åŠ¨
 	//db = new QSqlDatabase(QSqlDatabase::addDatabase("QODBC"));
 
-	//ÉèÖÃip
+	//è®¾ç½®ip
 	db->setHostName("localhost");
-	//ÉèÖÃ¶Ë¿ÚºÅ
+	//è®¾ç½®ç«¯å£å·
 	db->setPort(3306);
-	//ÉèÖÃÁ¬½ÓÊı¾İ¿âÃû
-	db->setDatabaseName("NeveRF");
-	//ÉèÖÃÓÃ»§Ãû
+	//è®¾ç½®è¿æ¥æ•°æ®åº“å
+	db->setDatabaseName("chart");
+	//è®¾ç½®ç”¨æˆ·å
 	db->setUserName("root");
-	//ÉèÖÃÓÃ»§ÃÜÂë
-	db->setPassword("mysql.fan.1973");
+	//è®¾ç½®ç”¨æˆ·å¯†ç 
+	db->setPassword("root");
 
-	//ÅĞ¶ÏÊı¾İ¿âÊÇ·ñ´ò¿ª³É¹¦
+	//åˆ¤æ–­æ•°æ®åº“æ˜¯å¦æ‰“å¼€æˆåŠŸ
 	if (!db->open())
 	{
 		QSqlError er = db->lastError();
-		QMessageBox::warning(nullptr, "Êı¾İ¿âÁ¬½Ó´íÎó", "Êı¾İ¿âÁ¬½Ó´íÎó£¬ÇëÖØÊÔ");
+		QMessageBox::warning(nullptr, "æ•°æ®åº“è¿æ¥é”™è¯¯", "æ•°æ®åº“è¿æ¥é”™è¯¯ï¼Œè¯·é‡è¯•");
 	}
 	else 
 	{
-		qDebug() << "Á¬½ÓÊı¾İ¿â³É¹¦";
+		qDebug() << "è¿æ¥æ•°æ®åº“æˆåŠŸ";
 		
-		//²éÑ¯Êı¾İ¿â¶ÔÏóÖ¸Õë
+		//æŸ¥è¯¢æ•°æ®åº“å¯¹è±¡æŒ‡é’ˆ
 		QSqlQuery query(*db);
 	}
 
@@ -50,7 +50,7 @@ bool mysql::usernameisexist(const QString& username)
 	query->bindValue(":name", username);
 	if (query->exec())
 	{
-		// Èç¹û²éÑ¯½á¹û°üº¬ÖÁÉÙÒ»ĞĞ£¬Ôò±íÊ¾ÓÃ»§ÃûÒÑ´æÔÚ
+		// å¦‚æœæŸ¥è¯¢ç»“æœåŒ…å«è‡³å°‘ä¸€è¡Œï¼Œåˆ™è¡¨ç¤ºç”¨æˆ·åå·²å­˜åœ¨
 		if (query->next())
 		{
 			return true;
@@ -58,7 +58,7 @@ bool mysql::usernameisexist(const QString& username)
 	}
 	else
 	{
-		// ²éÑ¯Ö´ĞĞÊ§°Ü£¬¿ÉÄÜ·¢ÉúÁË´íÎó
+		// æŸ¥è¯¢æ‰§è¡Œå¤±è´¥ï¼Œå¯èƒ½å‘ç”Ÿäº†é”™è¯¯
 		qDebug() << "Error executing query:" << query->lastError().text();
 	}
 	return false;
@@ -71,7 +71,7 @@ void mysql::regist(const QString& username, const QString& password)
 	query->bindValue(":psd", password);
 	if (query->exec())
 	{
-		qDebug() << "Ğ´Èë³É¹¦\n";
+		qDebug() << "å†™å…¥æˆåŠŸ\n";
 		return;
 	}
 	return;

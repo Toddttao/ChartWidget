@@ -24,20 +24,20 @@ public:
     ~mysql();
 
 private:
-    //Êı¾İ¿â¶ÔÏóÖ¸Õë
+    //æ•°æ®åº“å¯¹è±¡æŒ‡é’ˆ
     QSqlDatabase* db;
 
-    //²éÑ¯Êı¾İ¿â¶ÔÏóÖ¸Õë
+    //æŸ¥è¯¢æ•°æ®åº“å¯¹è±¡æŒ‡é’ˆ
     QSqlQuery* query;
 
 public:
-    //³õÊ¼»¯Êı¾İ¿â
+    //åˆå§‹åŒ–æ•°æ®åº“
     void initdatabase();
-    //ÓÃ»§ÖØÃûÑéÖ¤
+    //ç”¨æˆ·é‡åéªŒè¯
     bool usernameisexist(const QString& username);
-    //ÓÃ»§×¢²á
+    //ç”¨æˆ·æ³¨å†Œ
     void regist(const QString& username, const QString& password);
-    //µÇÂ¼ÑéÖ¤
+    //ç™»å½•éªŒè¯
     bool logincheck(const QString& username, const QString& password);
 
 };
