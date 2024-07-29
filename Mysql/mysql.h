@@ -36,7 +36,7 @@ public:
     //用户重名验证
     bool usernameisexist(const QString& username);
     //用户注册
-    void regist(const QString& username, const QString& password);
+    bool regist(const QString& username, const QString& password);
     //登录验证
     bool logincheck(const QString& username, const QString& password);
 

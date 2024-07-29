@@ -31,7 +31,7 @@ void mysql:: initdatabase()
 	//设置用户名
 	db->setUserName("root");
 	//设置用户密码
-	db->setPassword("root");
+	db->setPassword("mysql.fan.1973");
 
 	//判断数据库是否打开成功
 	if (!db->open())
@@ -48,9 +48,10 @@ void mysql:: initdatabase()
 
 }
 
+//用户名判重
 bool mysql::usernameisexist(const QString& username)
 {
-	query->prepare("Select username from chart where username = :name");
+	query->prepare("Select username from f_user where username = :name");
 	query->bindValue(":name", username);
 	if (query->exec())
 	{
@@ -68,22 +69,24 @@ bool mysql::usernameisexist(const QString& username)
 	return false;
 }
 
-void mysql::regist(const QString& username, const QString& password)
+//用户注册
+bool mysql::regist(const QString& username, const QString& password)
 {
-	query->prepare("Insert into chart(username, password) values(:name, :psd) ");
+	query->prepare("Insert into f_user(username, password) values(:name, :psd) ");
 	query->bindValue(":name", username);
 	query->bindValue(":psd", password);
 	if (query->exec())
 	{
 		qDebug() << "写入成功\n";
-		return;
+		return true;
 	}
-	return;
+	return false;
 }
 
+//登录判断用户名、密码是否正确
 bool mysql::logincheck(const QString& username, const QString& password)
 {
-	query->prepare("select * from chart where username = (:name) and password = (:password)");
+	query->prepare("select * from f_user where username = (:name) and password = (:password)");
 	query->bindValue(":name", username);
 	query->bindValue(":password", password);
 	if (query->exec())

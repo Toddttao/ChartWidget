@@ -114,11 +114,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="regist_windows.cpp" />
     <QtRcc Include="login.qrc" />
+    <QtUic Include="regist_windows.ui" />
     <QtUic Include="login.ui" />
     <QtMoc Include="login.h" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="regist_windows.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

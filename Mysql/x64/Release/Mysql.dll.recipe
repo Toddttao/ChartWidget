@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\C++\Qt\ChartWidget\x64\Release\Mysql.dll</FullPath>
+      <FullPath>D:\C\C++Project\ChartWidget\x64\Release\Mysql.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

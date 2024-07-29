@@ -1,9 +1,12 @@
 #include "login.h"
+
+#include "regist_windows.h"
 #include "Mysql/mysql.h"
 
-login::login(QWidget *parent)
+login::login(mysql &db, QWidget *parent)
     : QDialog(parent)
-	, db(new mysql)
+	, db(&db)
+	,registwindows(std::make_shared<regist_windows>(db,nullptr))
 {
     ui.setupUi(this);
 	this->setWindowTitle("login system");
@@ -18,8 +21,8 @@ login::~login()
 //登录
 void login::loginFunction()
 {
-	inUser = ui.username->text();
-	inpsw = ui.password->text();
+	inUser = ui.username->text().trimmed();
+	inpsw = ui.password->text().trimmed();
 	if(db->logincheck(inUser,inpsw))
 	{
 		QMessageBox info;
@@ -34,6 +37,8 @@ void login::loginFunction()
 //注册
 void login::signFunction()
 {
-	
+	registwindows->setWindowTitle("注册窗口");
+	registwindows->show();
+	this->close();
 }
 
