@@ -30,7 +30,15 @@ private:
     //查询数据库对象指针
     QSqlQuery* query;
 
-private:
+public:
+    //初始化数据库
     void initdatabase();
+    //用户重名验证
+    bool usernameisexist(const QString& username);
+    //用户注册
+    void regist(const QString& username, const QString& password);
+    //登录验证
+    bool logincheck(const QString& username, const QString& password);
+
 };
 

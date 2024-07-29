@@ -11,6 +11,9 @@
 #define MYLIBRARY_API __declspec(dllimport)
 #endif
 
+class mysql;
+
+
 class login : public QDialog
 {
     Q_OBJECT
@@ -26,9 +29,7 @@ private slots:
 private:
     Ui::loginClass ui;
 
-    QString m_username = "jack";
-    QString m_password = "rols";
-
+    mysql* db;
     QString inUser;
     QString inpsw;
 };

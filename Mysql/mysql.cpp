@@ -2,7 +2,7 @@
 
 mysql::mysql():db(new QSqlDatabase(QSqlDatabase::addDatabase("ODBC")))
 {
-	
+	initdatabase();
 }
 mysql::~mysql()
 {
@@ -38,7 +38,54 @@ void mysql:: initdatabase()
 		
 		//查询数据库对象指针
 		QSqlQuery query(*db);
-
 	}
 
+
+
+}
+
+bool mysql::usernameisexist(const QString& username)
+{
+	query->prepare("Select username from chart where username = :name");
+	query->bindValue(":name", username);
+	if (query->exec())
+	{
+		// 如果查询结果包含至少一行，则表示用户名已存在
+		if (query->next())
+		{
+			return true;
+		}
+	}
+	else
+	{
+		// 查询执行失败，可能发生了错误
+		qDebug() << "Error executing query:" << query->lastError().text();
+	}
+	return false;
+}
+
+void mysql::regist(const QString& username, const QString& password)
+{
+	query->prepare("Insert into chart(username, password) values(:name, :psd) ");
+	query->bindValue(":name", username);
+	query->bindValue(":psd", password);
+	if (query->exec())
+	{
+		qDebug() << "写入成功\n";
+		return;
+	}
+	return;
+}
+
+bool mysql::logincheck(const QString& username, const QString& password)
+{
+	query->prepare("select * from chart where username = (:name) and password = (:password)");
+	query->bindValue(":name", username);
+	query->bindValue(":password", password);
+	if (query->exec())
+	{
+		return true;
+
+	}
+	return false;
 }

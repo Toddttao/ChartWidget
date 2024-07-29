@@ -1,7 +1,9 @@
 #include "login.h"
+#include "Mysql/mysql.h"
 
 login::login(QWidget *parent)
     : QDialog(parent)
+	, db(new mysql)
 {
     ui.setupUi(this);
 	this->setWindowTitle("login system");
@@ -18,7 +20,7 @@ void login::loginFunction()
 {
 	inUser = ui.username->text();
 	inpsw = ui.password->text();
-	if(inUser == m_username && inpsw == m_password)
+	if(db->logincheck(inUser,inpsw))
 	{
 		QMessageBox info;
 		info.information(this, "tip", "success");
