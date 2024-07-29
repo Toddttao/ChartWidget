@@ -1,12 +1,19 @@
 #include "mysql.h"
 
-mysql::mysql():db(new QSqlDatabase(QSqlDatabase::addDatabase("QODBC")))
+mysql::mysql()
+	:db(new QSqlDatabase(QSqlDatabase::addDatabase("QODBC")))
+	, query(new QSqlQuery(*db))
 {
 	initdatabase();
 }
 mysql::~mysql()
 {
-	
+	if (db->isOpen())
+	{
+		db->close();
+	}
+	delete query;
+	delete db;
 }
 
 //初始化数据库
@@ -35,9 +42,6 @@ void mysql:: initdatabase()
 	else 
 	{
 		qDebug() << "连接数据库成功";
-		
-		//查询数据库对象指针
-		QSqlQuery query(*db);
 	}
 
 
