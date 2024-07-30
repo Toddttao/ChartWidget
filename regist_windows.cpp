@@ -10,6 +10,7 @@ regist_windows::regist_windows(mysql&db, QDialog* parent)
 {
 	ui.setupUi(this);
 
+	connect(ui.back, &QPushButton::clicked, this, &regist_windows::backrefistwindows);
 	connect(ui.regist, &QPushButton::clicked, this,&regist_windows::registInfo);
 
 }
