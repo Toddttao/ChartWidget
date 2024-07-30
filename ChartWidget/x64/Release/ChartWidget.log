@@ -1,6 +1,12 @@
-﻿LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/LTCG”规范)
+﻿  login.cpp
+  main.cpp
+  regist_windows.cpp
+  moc_login.cpp
+  moc_regist_windows.cpp
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/LTCG”规范)
   正在生成代码
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 110 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  12 of 193 functions ( 6.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   ChartWidget.vcxproj -> D:\C++\Qt\ChartWidget\x64\Release\ChartWidget.exe

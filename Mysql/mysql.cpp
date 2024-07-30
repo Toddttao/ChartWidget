@@ -5,6 +5,10 @@ mysql::mysql()
 	, query(new QSqlQuery(*db))
 {
 	initdatabase();
+	if (!db || !isConnected()) {
+		QMessageBox::critical(nullptr, "错误", "数据库连接失败");
+	}
+	
 }
 mysql::~mysql()
 {
@@ -14,6 +18,11 @@ mysql::~mysql()
 	}
 	delete query;
 	delete db;
+}
+
+bool mysql::isConnected() const
+{
+	return db->isOpen();
 }
 
 //初始化数据库
@@ -48,9 +57,10 @@ void mysql:: initdatabase()
 
 }
 
+//用户名判重
 bool mysql::usernameisexist(const QString& username)
 {
-	query->prepare("Select username from chart where username = :name");
+	query->prepare("Select username from f_user where username = :name");
 	query->bindValue(":name", username);
 	if (query->exec())
 	{
@@ -68,28 +78,48 @@ bool mysql::usernameisexist(const QString& username)
 	return false;
 }
 
-void mysql::regist(const QString& username, const QString& password)
+//用户注册
+bool mysql::regist(const QString& username, const QString& password)
 {
-	query->prepare("Insert into chart(username, password) values(:name, :psd) ");
+	query->prepare("Insert into f_user(username, password) values(:name, :psd) ");
 	query->bindValue(":name", username);
 	query->bindValue(":psd", password);
 	if (query->exec())
 	{
 		qDebug() << "写入成功\n";
-		return;
-	}
-	return;
-}
-
-bool mysql::logincheck(const QString& username, const QString& password)
-{
-	query->prepare("select * from chart where username = (:name) and password = (:password)");
-	query->bindValue(":name", username);
-	query->bindValue(":password", password);
-	if (query->exec())
-	{
 		return true;
-
 	}
 	return false;
 }
+
+//登录判断用户名、密码是否正确
+
+
+bool mysql::logincheck(const QString & username, const QString & password)
+{
+	query->prepare("SELECT * FROM f_user WHERE username = :name AND password = :password");
+	query->bindValue(":name", username);
+	query->bindValue(":password", password);
+
+	qDebug() << "Executing login query for username:" << username;
+
+	if (query->exec())
+	{
+		if (query->next())
+		{
+			qDebug() << "Login successful for user:" << username;
+			return true;
+		}
+		else
+		{
+			qDebug() << "Login failed: No matching user found for username:" << username;
+			return false;
+		}
+	}
+	else
+	{
+		qDebug() << "Login query failed:" << query->lastError().text();
+		return false;
+	}
+}
+

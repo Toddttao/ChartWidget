@@ -23,6 +23,7 @@ public:
     mysql();
     ~mysql();
 
+
 private:
     //数据库对象指针
     QSqlDatabase* db;
@@ -31,12 +32,14 @@ private:
     QSqlQuery* query;
 
 public:
+
+    bool isConnected() const;
     //初始化数据库
     void initdatabase();
     //用户重名验证
     bool usernameisexist(const QString& username);
     //用户注册
-    void regist(const QString& username, const QString& password);
+    bool regist(const QString& username, const QString& password);
     //登录验证
     bool logincheck(const QString& username, const QString& password);
 

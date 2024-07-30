@@ -12,14 +12,14 @@
 #endif
 
 class mysql;
-
+class regist_windows;
 
 class login : public QDialog
 {
     Q_OBJECT
 
 public:
-    login(QWidget *parent = nullptr);
+    login(std::shared_ptr<mysql> db,QWidget *parent = nullptr);
     ~login();
 
 private slots:
@@ -29,7 +29,8 @@ private slots:
 private:
     Ui::loginClass ui;
 
-    mysql* db;
+    std::shared_ptr<mysql> db;
     QString inUser;
     QString inpsw;
+    std::weak_ptr<regist_windows> registwindows;
 };
