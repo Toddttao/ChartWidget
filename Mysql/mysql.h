@@ -23,6 +23,7 @@ public:
     mysql();
     ~mysql();
 
+
 private:
     //数据库对象指针
     QSqlDatabase* db;
@@ -31,6 +32,8 @@ private:
     QSqlQuery* query;
 
 public:
+
+    bool isConnected() const;
     //初始化数据库
     void initdatabase();
     //用户重名验证
