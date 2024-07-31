@@ -1,19 +1,28 @@
 #include "mysql.h"
 
-mysql::mysql()
-	:db(new QSqlDatabase(QSqlDatabase::addDatabase("QODBC")))
-	, query(new QSqlQuery(*db))
+mysql::mysql()//mysql构造函数
+	:db(new QSqlDatabase(QSqlDatabase::addDatabase("QODBC")))//数据库初始化（通过OBDC驱动连接mysql数据库）
+	, query(new QSqlQuery(*db))//查询指针初始化
 {
 	initdatabase();
+	if (!db || !isConnected()) {
+		QMessageBox::critical(nullptr, "错误", "数据库连接失败");
+	}
+	
 }
 mysql::~mysql()
 {
-	if (db->isOpen())
+	if (db->isOpen())//判断数据是否成功打开
 	{
-		db->close();
+		db->close();//关闭数据库
 	}
-	delete query;
-	delete db;
+	delete query;//删除查询指针
+	delete db;//删除数据库指针
+}
+
+bool mysql::isConnected() const
+{
+	return db->isOpen();
 }
 
 //初始化数据库
@@ -31,7 +40,8 @@ void mysql:: initdatabase()
 	//设置用户名
 	db->setUserName("root");
 	//设置用户密码
-	db->setPassword("mysql.fan.1973");
+	//db->setPassword("mysql.fan.1973");
+	db->setPassword("root");
 
 	//判断数据库是否打开成功
 	if (!db->open())
@@ -72,10 +82,12 @@ bool mysql::usernameisexist(const QString& username)
 //用户注册
 bool mysql::regist(const QString& username, const QString& password)
 {
+	//写sql语句  :name, :psd  占位符，其值通过 query->bindValue()绑定 
 	query->prepare("Insert into f_user(username, password) values(:name, :psd) ");
+	//绑定sql语句中的值
 	query->bindValue(":name", username);
 	query->bindValue(":psd", password);
-	if (query->exec())
+	if (query->exec())//  query->exec()  执行sql语句
 	{
 		qDebug() << "写入成功\n";
 		return true;
@@ -84,15 +96,33 @@ bool mysql::regist(const QString& username, const QString& password)
 }
 
 //登录判断用户名、密码是否正确
-bool mysql::logincheck(const QString& username, const QString& password)
+
+
+bool mysql::logincheck(const QString & username, const QString & password)
 {
-	query->prepare("select * from f_user where username = (:name) and password = (:password)");
+	query->prepare("SELECT * FROM f_user WHERE username = :name AND password = :password");
 	query->bindValue(":name", username);
 	query->bindValue(":password", password);
+
+	qDebug() << "Executing login query for username:" << username;
+
 	if (query->exec())
 	{
-		return true;
-
+		if (query->next())//  获取 query->exec() 执行的结果
+		{
+			qDebug() << "Login successful for user:" << username;
+			return true;
+		}
+		else
+		{
+			qDebug() << "Login failed: No matching user found for username:" << username;
+			return false;
+		}
 	}
-	return false;
+	else
+	{
+		qDebug() << "Login query failed:" << query->lastError().text();// 获取最后的一个错误
+		return false;
+	}
 }
+

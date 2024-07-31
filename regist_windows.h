@@ -11,8 +11,11 @@ class regist_windows :
     Q_OBJECT
 
 public:
-    regist_windows(mysql& db,QDialog* parent = nullptr);
+    regist_windows(std::shared_ptr<mysql> db,QDialog* parent = nullptr);
     ~regist_windows();
+
+signals:
+    void registrationComplete();
 
 private slots:
     void registInfo();
@@ -20,8 +23,7 @@ private slots:
 
 private:
     Ui::Dialog ui;
-    std::shared_ptr<login> loginwindows;
-    mysql *_db;
+    std::shared_ptr<mysql> db;
     QString user;
     QString pass;
 };
