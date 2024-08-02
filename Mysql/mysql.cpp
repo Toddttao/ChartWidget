@@ -40,7 +40,6 @@ void mysql:: initdatabase()
 	//设置用户名
 	db->setUserName("root");
 	//设置用户密码
-	//db->setPassword("mysql.fan.1973");
 	db->setPassword("root");
 
 	//判断数据库是否打开成功
