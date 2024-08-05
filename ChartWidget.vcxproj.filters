@@ -46,6 +46,9 @@
     <ClCompile Include="mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="usermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="regist_windows.h">
@@ -54,12 +57,18 @@
     <QtMoc Include="mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="usermanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="regist_windows.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="mainWindows.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="usermanager.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -125,3 +125,25 @@ bool mysql::logincheck(const QString & username, const QString & password)
 	}
 }
 
+QList<QString> mysql::listusername() const
+{
+	QList<QString> usernamelist;
+	query->prepare("select * from f_user ");
+
+	if(!query->exec())
+	{
+		QMessageBox::warning(nullptr, "提示", "执行失败");
+		return usernamelist;
+	}
+
+	while (query->next())
+	{
+		//获取查询到的 记录 的数据（值）
+		QString username = query->value("username").toString();
+		//将 数据 添加到usernamelist中
+		usernamelist.append(username);
+	}
+	//返回list数据
+	return  usernamelist;
+}
+

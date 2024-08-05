@@ -4,6 +4,7 @@
 #include "ui_login.h"
 #include <qmessagebox.h>
 #include "Mysql/mysql.h"
+#include <qstandarditemmodel.h>
 
 #ifdef MYLIBRARY_EXPORTS
 #define MYLIBRARY_API __declspec(dllexport)
@@ -13,7 +14,7 @@
 
 class mysql;
 class regist_windows;
-
+class usermanager;
 class login : public QDialog
 {
     Q_OBJECT
@@ -33,4 +34,5 @@ private:
     QString inUser;
     QString inpsw;
     std::weak_ptr<regist_windows> registwindows;
+    usermanager* _pmanager;
 };
