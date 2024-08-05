@@ -125,3 +125,9 @@ bool mysql::logincheck(const QString & username, const QString & password)
 	}
 }
 
+QList<QString> mysql::listAllUser() const
+{
+	query->prepare("select * from f_user ");
+
+}
+
