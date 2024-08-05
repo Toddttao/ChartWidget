@@ -1,11 +1,1 @@
-﻿  moc mainwindow.h
-  login.cpp
-  mainwindow.cpp
-  moc_mainwindow.cpp
-LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/LTCG”规范)
-  正在生成代码
-  11 of 235 functions ( 4.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
-  已完成代码的生成
-  ChartWidget.vcxproj -> D:\C\C++Project\ChartWidget\x64\Release\ChartWidget.exe
+﻿  ChartWidget.vcxproj -> D:\C\C++Project\ChartWidget\x64\Release\ChartWidget.exe

@@ -125,3 +125,84 @@ bool mysql::logincheck(const QString & username, const QString & password)
 	}
 }
 
+//用户列表
+QList<QString> mysql::listusername() const
+{
+	QList<QString> usernamelist;
+	query->prepare("select * from f_user ");
+
+	if(!query->exec())
+	{
+		QMessageBox::warning(nullptr, "提示", "执行失败");
+		return usernamelist;
+	}
+
+	while (query->next())
+	{
+		//获取查询到的 记录 的数据（值）
+		QString username = query->value("username").toString();
+		//将 数据 添加到usernamelist中
+		usernamelist.append(username);
+	}
+	//返回list数据
+	return  usernamelist;
+}
+
+//列出用户权限
+QList<QString> mysql::listpower() const
+{
+	QList<QString> listpower ;
+	query->prepare("select * from f_user");
+	if(!query->exec())
+	{
+		QMessageBox::warning(nullptr, "提示", "执行失败");
+		return listpower;
+	}
+	while (query->next())
+	{
+		//获取查询到的数据
+		bool userpower = query->value("power").toBool();
+		if(userpower)
+		{
+			QString power = "管理员";
+			listpower.append(power);
+		}
+		else
+		{
+			QString power = "普通用户";
+			listpower.append(power);
+		}
+	}
+	return listpower;
+}
+
+//添加用户
+void mysql::adduser(const QString& username, const QString& password)
+{
+	regist(username, password);
+}
+
+//删除用户
+void mysql::deleteuser(QString& username)
+{
+	query->prepare("delete from f_user where username = :username");
+	query->bindValue(":username",username);
+	if(query->exec())
+	{
+
+		if (query->next())//  获取 query->exec() 执行的结果
+		{
+			qDebug() << "Login successful for user:" << username;
+			return ;
+		}
+		else
+		{
+			qDebug() << "Login failed: No matching user found for username:" << username;
+			return;
+		}
+	}
+	QMessageBox::warning(nullptr, "提示", "执行失败");
+}
+
+
+

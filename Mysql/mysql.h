@@ -6,6 +6,7 @@
 #include <QtSql/qsqldriver.h>
 #include <QtSql/qsqlquery.h>
 #include <qmessagebox.h>
+#include <QList>
 
 
 
@@ -42,6 +43,15 @@ public:
     bool regist(const QString& username, const QString& password);
     //登录验证
     bool logincheck(const QString& username, const QString& password);
+    //列出所有用户
+    QList<QString> listusername()const;
+    //列出用户权限
+    QList<QString> listpower()const;
+    //增加用户
+    void adduser(const QString& username, const QString& password);
+
+    //删除用户
+    void deleteuser(QString& username);
 
 };
 

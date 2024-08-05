@@ -27,6 +27,12 @@ void regist_windows::backrefistwindows()
 		this->close();//关闭注册窗口
 }
 
+void regist_windows::disableButton()
+{
+    ui.back->setDisabled(true);
+    ui.back->setVisible(false);
+}
+
 void regist_windows::registInfo()
 {
     QString user = ui.username->text().trimmed();//获取文本框中的内容，trimmed()清除空格
