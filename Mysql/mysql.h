@@ -53,5 +53,8 @@ public:
     //删除用户
     void deleteuser(QString& username);
 
+    //修改用户信息
+    void updateuser();
+
 };
 

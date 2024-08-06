@@ -1,8 +1,6 @@
 #include "regist_windows.h"
 #include "login.h"
 
-
-
 //注册窗口构造函数
 regist_windows::regist_windows(std::shared_ptr<mysql> db, QDialog* parent)
 	:db(db)

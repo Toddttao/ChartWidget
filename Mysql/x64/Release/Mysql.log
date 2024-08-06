@@ -1,4 +1,6 @@
-﻿  mysql.cpp
+﻿  moc mysql.h
+  mysql.cpp
+  moc_mysql.cpp
     正在创建库 D:\C\C++Project\ChartWidget\x64\Release\Mysql.lib 和对象 D:\C\C++Project\ChartWidget\x64\Release\Mysql.exp
   正在生成代码
   1 of 135 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
