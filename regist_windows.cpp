@@ -1,8 +1,6 @@
 #include "regist_windows.h"
 #include "login.h"
 
-
-
 //注册窗口构造函数
 regist_windows::regist_windows(std::shared_ptr<mysql> db, QDialog* parent)
 	:db(db)
@@ -25,6 +23,12 @@ void regist_windows::backrefistwindows()
 
 		loginwindows->show();//显示login窗口
 		this->close();//关闭注册窗口
+}
+
+void regist_windows::disableButton()
+{
+    ui.back->setDisabled(true);
+    ui.back->setVisible(false);
 }
 
 void regist_windows::registInfo()

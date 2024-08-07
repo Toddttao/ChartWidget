@@ -3,6 +3,7 @@
 #include "regist_windows.h"
 #include "Mysql/mysql.h"
 #include "mainwindow.h"
+#include "usermanager.h"
 
 login::login(std::shared_ptr<mysql> db, QWidget *parent)
     : db(db)
@@ -31,9 +32,12 @@ void login::loginFunction()
     if (db->logincheck(inUser, inpsw))//登录验证
     {
         auto* mainWindows = new MainWindow(nullptr);
+        usermanager* manager = new usermanager(db);
         mainWindows->setAttribute(Qt::WA_DeleteOnClose);
         mainWindows->setWindowTitle("主窗口");
+        manager->show();
         mainWindows->show();
+        
         this->close();
     }
     else
