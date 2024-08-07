@@ -1,0 +1,4 @@
+﻿  mysql.cpp
+mysql.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
+    正在创建库 D:\C\C++Project\Chart\ChartWidget\bin\Debug\Mysql.lib 和对象 D:\C\C++Project\Chart\ChartWidget\bin\Debug\Mysql.exp
+  Mysql.vcxproj -> D:\C\C++Project\Chart\ChartWidget\bin\Debug\Mysql.dll

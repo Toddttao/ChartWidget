@@ -4,6 +4,8 @@
 #include "ui_usermanager.h"
 #include "QStandardItemModel"
 #include "QContextMenuEvent"
+#include "qdialog.h"
+#include "QLineEdit"
 
 class mysql;
 class regist_windows;
@@ -22,6 +24,7 @@ private slots:
 	/*void power();*/
 	void adduser();
 	void deleteuser();
+	void updateuser();
 
 	//上下文事件（处理右键菜单）
 	//void contextMenuEvent(QContextMenuEvent* event) override;
@@ -36,4 +39,7 @@ private:
 	regist_windows* add = nullptr;
 
 	QString name;
+	QString powers;
+
+	QDialog* input;
 };

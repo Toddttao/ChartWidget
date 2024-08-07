@@ -1,0 +1,5 @@
+﻿  moc usermanager.h
+  login.cpp
+  usermanager.cpp
+  moc_usermanager.cpp
+  ChartWidget.vcxproj -> D:\C\C++Project\Chart\ChartWidget\bin\Debug\ChartWidget.exe

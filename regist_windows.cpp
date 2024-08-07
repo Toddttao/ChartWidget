@@ -52,6 +52,7 @@ void regist_windows::registInfo()
         QMessageBox::information(this, "提示", "注册成功");
         emit registrationComplete();// emit 触发信号
         this->close();
+       
     }
     else
     {

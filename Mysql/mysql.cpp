@@ -40,8 +40,8 @@ void mysql:: initdatabase()
 	//设置用户名
 	db->setUserName("root");
 	//设置用户密码
-	//db->setPassword("mysql.fan.1973");
-	db->setPassword("root");
+	db->setPassword("mysql.fan.1973");
+	//db->setPassword("root");
 
 	//判断数据库是否打开成功
 	if (!db->open())
@@ -203,6 +203,25 @@ void mysql::deleteuser(QString& username)
 		}
 	}
 	QMessageBox::warning(nullptr, "提示", "执行失败");
+}
+
+//修改用户权限
+void mysql::updateuser(QString& userpower)
+{
+	query->prepare("update f_user set power = :userpower");
+	query->bindValue(":userpower", userpower);
+	if(!query->exec())
+	{
+		QMessageBox::warning(nullptr, "提示", "用户权限异常");
+		return;
+	}
+
+	if(!query->next())
+	{
+		QMessageBox::warning(nullptr, "提示", "修改失败");
+		return;
+	}
+
 }
 
 

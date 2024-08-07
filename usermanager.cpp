@@ -19,6 +19,9 @@ usermanager::usermanager(std::shared_ptr<mysql> db, QWidget* parent)
 	connect(ui.deletuser, &QPushButton::clicked, this, &usermanager::deleteuser);
 	connect(ui.tableView, &QTableView::clicked, this, &usermanager::onClicked);
 	connect(this, &usermanager::signal, this, &usermanager::init);
+
+	connect(ui.changeuser, &QPushButton::clicked, this, &usermanager::updateuser);
+
 }
 
 usermanager::~usermanager()
@@ -30,8 +33,15 @@ usermanager::~usermanager()
 void usermanager::adduser()
 {
 	add = new regist_windows(db);
+	//禁用按钮
 	add->disableButton();
 	add->show();
+	//关联信号与槽（注册窗口关闭时，触发 signal()信号 ）
+	connect(add, &regist_windows::registrationComplete, this, [&]()
+		{
+			emit signal();
+		});
+	
 }
 
 //删除用户
@@ -46,6 +56,23 @@ void usermanager::deleteuser()
 
 }
 
+//修改用户
+void usermanager::updateuser()
+{
+	input = new QDialog();
+	QLineEdit* lineInfo = new QLineEdit();
+	input->layout()->addWidget(lineInfo);
+	connect(lineInfo, &QLineEdit::editingFinished, this, [&]()
+		{
+			powers = lineInfo->text().trimmed();
+		});
+	if(!powers.isEmpty())
+	{
+		db->updateuser(powers);
+	}
+}
+
+//鼠标点击
 void usermanager::onClicked(const QModelIndex& index)
 {
 	if (index.isValid())
