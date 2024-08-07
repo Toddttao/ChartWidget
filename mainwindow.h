@@ -20,6 +20,6 @@ private:
 	Ui::Form ui;
 	std::shared_ptr<mysql> db;
 
-	QString sengInfo;
+	QString sendInfo;
 	QString recvInfo;
 };

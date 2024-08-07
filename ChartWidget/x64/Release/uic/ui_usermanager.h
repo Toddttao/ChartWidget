@@ -28,7 +28,7 @@ class Ui_usermanagerClass
 {
 public:
     QWidget *centralWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout;
@@ -47,15 +47,15 @@ public:
         usermanagerClass->resize(748, 531);
         centralWidget = new QWidget(usermanagerClass);
         centralWidget->setObjectName("centralWidget");
-        widget = new QWidget(centralWidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 741, 471));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(0, 0, 741, 471));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        tableView = new QTableView(widget);
+        tableView = new QTableView(layoutWidget);
         tableView->setObjectName("tableView");
 
         gridLayout->addWidget(tableView, 0, 0, 1, 1);
@@ -63,22 +63,22 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName("horizontalLayout");
-        showlist = new QPushButton(widget);
+        showlist = new QPushButton(layoutWidget);
         showlist->setObjectName("showlist");
 
         horizontalLayout->addWidget(showlist);
 
-        adduser = new QPushButton(widget);
+        adduser = new QPushButton(layoutWidget);
         adduser->setObjectName("adduser");
 
         horizontalLayout->addWidget(adduser);
 
-        deletuser = new QPushButton(widget);
+        deletuser = new QPushButton(layoutWidget);
         deletuser->setObjectName("deletuser");
 
         horizontalLayout->addWidget(deletuser);
 
-        changeuser = new QPushButton(widget);
+        changeuser = new QPushButton(layoutWidget);
         changeuser->setObjectName("changeuser");
 
         horizontalLayout->addWidget(changeuser);
