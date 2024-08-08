@@ -10,6 +10,9 @@ login::login(std::shared_ptr<mysql> db, QWidget *parent)
 {
     ui.setupUi(this);
 	this->setWindowTitle("login system");
+
+    ui.username->setText("admin");
+    ui.password->setText("admin");
     
 	connect(ui.login, &QPushButton::clicked, this, &login::loginFunction);
 	connect(ui.p_register, &QPushButton::clicked, this, &login::signFunction);

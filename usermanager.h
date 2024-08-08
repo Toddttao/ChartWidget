@@ -19,9 +19,9 @@ public:
 	~usermanager();
 
 	void onClicked(const QModelIndex& index);
+
 private slots:
 	void init();
-	/*void power();*/
 	void adduser();
 	void deleteuser();
 	void updateuser();
@@ -42,4 +42,6 @@ private:
 	QString powers;
 
 	QDialog* input;
+	QPushButton* updatebutton;
+	QPushButton* cencelbutton;
 };

@@ -22,6 +22,8 @@ usermanager::usermanager(std::shared_ptr<mysql> db, QWidget* parent)
 
 	connect(ui.changeuser, &QPushButton::clicked, this, &usermanager::updateuser);
 
+	/*connect(updatebutton, &QPushButton::clicked, this, &usermanager::updatebtn);
+	connect(cencelbutton, &QPushButton::clicked, this, &usermanager::cencelbtn);*/
 }
 
 usermanager::~usermanager()
@@ -59,17 +61,46 @@ void usermanager::deleteuser()
 //修改用户
 void usermanager::updateuser()
 {
-	input = new QDialog();
-	QLineEdit* lineInfo = new QLineEdit();
-	input->layout()->addWidget(lineInfo);
+	//新建一个窗口
+	input = new QDialog(nullptr);
+	input->resize(400, 200);
+	//创建一个输入框
+	QLineEdit* lineInfo = new QLineEdit(nullptr);
+	lineInfo->resize(200, 60);
+	//设置这个对象的 父对象
+	lineInfo->setParent(input);
+	lineInfo->move(100, 30);
+	//新建两个按钮
+	updatebutton = new QPushButton("更改", this);
+	cencelbutton = new QPushButton("取消", this);
+	//设置两个按钮
+	updatebutton->resize(140, 50);
+	cencelbutton->resize(140, 50);
+	updatebutton->move(50, 140);
+	cencelbutton->move(210, 140);
+	updatebutton->setParent(input);
+	cencelbutton->setParent(input);
+
+	//关联槽函数
+	connect(updatebutton, &QPushButton::clicked, [&]()
+		{
+			QString userpower = lineInfo->text().trimmed();
+			db->updateuser(userpower);
+		});
+	connect(cencelbutton, &QPushButton::clicked, [&]()
+		{
+			input->close();
+		});
+
+	input->show();
 	connect(lineInfo, &QLineEdit::editingFinished, this, [&]()
 		{
 			powers = lineInfo->text().trimmed();
 		});
-	if(!powers.isEmpty())
+	/*if(!powers.isEmpty())
 	{
 		db->updateuser(powers);
-	}
+	}*/
 }
 
 //鼠标点击
@@ -77,9 +108,9 @@ void usermanager::onClicked(const QModelIndex& index)
 {
 	if (index.isValid())
 	{
-		QString itemname = index.data().toString();
-		qDebug() << itemname;
-		name = itemname;
+		name = index.sibling(index.row(), 0).data().toString();
+		powers = index.sibling(index.row(), 1).data().toString();
+		
 	}
 }
 
@@ -127,15 +158,5 @@ void usermanager::init()
 	ui.tableView->setModel(pModel);
 }
 
-//用户权限
-//void usermanager::power()
-//{
-//	QList<QString> userpower = db->listpower();
-//	for(QString _power:userpower)
-//	{
-//		QStandardItem* userpower = new QStandardItem(_power);
-//		pModel->appendRow(userpower);
-//	}
-//	ui.tableView->setModel(pModel);
-//}
+
 

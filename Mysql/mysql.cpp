@@ -40,8 +40,8 @@ void mysql:: initdatabase()
 	//设置用户名
 	db->setUserName("root");
 	//设置用户密码
-	//db->setPassword("mysql.fan.1973");
-	db->setPassword("root");
+	db->setPassword("mysql.fan.1973");
+	//db->setPassword("root");
 
 	//判断数据库是否打开成功
 	if (!db->open())
@@ -221,7 +221,6 @@ void mysql::updateuser(QString& userpower)
 		QMessageBox::warning(nullptr, "提示", "修改失败");
 		return;
 	}
-	//something wrong in here
 }
 
 
