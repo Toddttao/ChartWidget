@@ -116,19 +116,6 @@ void usermanager::onClicked(const QModelIndex& index)
 }
 
 
-
-//void usermanager::contextMenuEvent(QContextMenuEvent* event)
-//{
-//	//从TabVIEW控件获取点击项的名称
-//	QModelIndex index = ui.tableView->indexAt(event->pos());
-//	if(!index.isValid())
-//	{
-//		return;
-//	}
-//	name = index.data().toString();
-//
-//}
-
 //初始化标准model
 void usermanager::init()
 {
