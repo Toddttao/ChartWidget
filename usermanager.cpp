@@ -103,11 +103,12 @@ void usermanager::updateuser()
 	}*/
 }
 
-//鼠标点击
+//鼠标点击事件
 void usermanager::onClicked(const QModelIndex& index)
 {
 	if (index.isValid())
 	{
+		//获取名称和权限
 		name = index.sibling(index.row(), 0).data().toString();
 		powers = index.sibling(index.row(), 1).data().toString();
 		
