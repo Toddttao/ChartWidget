@@ -58,7 +58,7 @@ void usermanager::deleteuser()
 
 }
 
-//修改用户
+//修改用户权限
 void usermanager::updateuser()
 {
 	//新建一个窗口
