@@ -10,7 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChartWidget", "ChartWidget.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mysql", "Mysql\Mysql.vcxproj", "{1CFBD090-3939-4DB4-B6EF-6FB509E3E31E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TCP", "..\TCP\TCP.vcxproj", "{F7CAD25B-7FC9-4970-85D9-F6BBE9CB709F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TCP", "TCP\TCP.vcxproj", "{F7CAD25B-7FC9-4970-85D9-F6BBE9CB709F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
