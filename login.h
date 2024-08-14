@@ -15,6 +15,7 @@
 class mysql;
 class regist_windows;
 class usermanager;
+
 class login : public QDialog
 {
     Q_OBJECT
@@ -35,4 +36,5 @@ private:
     QString inpsw;
     std::weak_ptr<regist_windows> registwindows;
     usermanager* _pmanager;
+    
 };

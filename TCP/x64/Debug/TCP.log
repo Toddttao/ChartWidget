@@ -1,0 +1,5 @@
+﻿  moc tcp.h
+  tcp.cpp
+  moc_tcp.cpp
+    正在创建库 D:\C\C++Project\Chart\ChartWidget\x64\Debug\TCP.lib 和对象 D:\C\C++Project\Chart\ChartWidget\x64\Debug\TCP.exp
+  TCP.vcxproj -> D:\C\C++Project\Chart\ChartWidget\x64\Debug\TCP.dll

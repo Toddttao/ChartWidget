@@ -1,1 +1,10 @@
-﻿
+﻿  moc tcp.h
+  tcp.cpp
+  moc_tcp.cpp
+    正在创建库 D:\C\C++Project\Chart\ChartWidget\bin\Release\TCP.lib 和对象 D:\C\C++Project\Chart\ChartWidget\bin\Release\TCP.exp
+  正在生成代码
+  4 of 86 functions ( 4.7%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  TCP.vcxproj -> D:\C\C++Project\Chart\ChartWidget\bin\Release\TCP.dll

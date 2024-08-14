@@ -1,2 +1,16 @@
-﻿  usermanager.cpp
-  ChartWidget.vcxproj -> D:\C\C++Project\Chart\ChartWidget\bin\Debug\ChartWidget.exe
+﻿  Reading Qt configuration (D:/Application_Program/qt/6.7.2/msvc2019_64/bin/qmake)
+  moc login.h
+  moc regist_windows.h
+  moc mainwindow.h
+  moc usermanager.h
+  mainwindow.cpp
+  regist_windows.cpp
+  usermanager.cpp
+  login.cpp
+  main.cpp
+  qrc_login.cpp
+  moc_login.cpp
+  moc_regist_windows.cpp
+  moc_mainwindow.cpp
+  moc_usermanager.cpp
+LINK : fatal error LNK1104: 无法打开文件“TCP.lib”

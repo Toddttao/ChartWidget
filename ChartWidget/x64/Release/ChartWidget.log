@@ -1,1 +1,13 @@
-﻿
+﻿  Reading Qt configuration (D:/Application_Program/qt/6.7.2/msvc2019_64/bin/qmake)
+  mainwindow.cpp
+  regist_windows.cpp
+  usermanager.cpp
+  login.cpp
+  main.cpp
+  qrc_login.cpp
+  moc_login.cpp
+  moc_regist_windows.cpp
+  moc_mainwindow.cpp
+  moc_usermanager.cpp
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/LTCG”规范)
+LINK : fatal error LNK1181: 无法打开输入文件“TCP.lib”
