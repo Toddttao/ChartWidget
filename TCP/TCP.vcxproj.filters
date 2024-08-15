@@ -29,8 +29,10 @@
     <ClCompile Include="tcp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClInclude Include="tcp.h">
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="tcp.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </QtMoc>
   </ItemGroup>
 </Project>

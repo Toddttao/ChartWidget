@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "Mysql/mysql.h"
 
+class TCP;
+
 class MainWindow  : public QMainWindow
 {
 	Q_OBJECT
@@ -22,4 +24,6 @@ private:
 
 	QString sendInfo;
 	QString recvInfo;
+
+	std::unique_ptr<TCP> pTCP;
 };
